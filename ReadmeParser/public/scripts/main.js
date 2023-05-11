@@ -46,59 +46,43 @@ function normalizeText(text) {
   return text;
 }
 
-const newText = normalizeText(inputText);
-console.log(newText);
+
+function gethtml(){
+  fetch('https://github.com/rhit-halseysh/rhit-halseysh.github.io')
+  .then(response => response.html())
+  .then(html => {
+    console.log(html.querySelector("#user-repositories-list").innerHTML);
+    console.log(html.text());
+
+  })
+  .catch(error => console.error(error));
 
 
-const apiKey = "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";
-const apiUrl = "https://api.openai.com/v1/engines/davinci/completions";
 
-fetch(apiUrl, {
-  method: "POST",
-  headers: {
-    "Content-Type": "application/json",
-    Authorization: `Bearer ${apiKey}`,
-  },
-  body: JSON.stringify({
-    prompt: newText + '\nTL;DR:\n',
-    max_tokens: 50,
-    temperature: 0.5,
-    n: 1,
-    stop: "\n",
-  }),
-})
-  .then((response) => response.json())
-  .then((data) => console.log(data))
-  .catch((error) => console.error(error));
-// const openai = require('openai');
-// const configuration = new openai.Configuration({
-//   apiKey: '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',
-//   basePath: 'https://api.openai.com/v1',
-// });
+}
 
-// const openaiApi = new openai.CompletionsApi(configuration);
 
-// const prompt = "What is the weather in Terre Haute 2 years ago";
-// const chatMessages = [{
-//     role: "user",
-//     content: prompt,
-// }];
 
-// const params = {
-//   engine: "davinci",
-//   prompt: chatMessages,
-//   maxTokens: 1024,
-//   temperature: 0.7,
-//   n: 1,
-//   stop: '\n'
-// };
+// const apiKey = "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";
+// const apiUrl = "https://api.openai.com/v1/engines/davinci/completions";
 
-// openaiApi.createCompletion(params)
-//   .then(response => {
-//     console.log(response.choices[0].text);
-//   })
-//   .catch(error => console.error(error));
-
+// fetch(apiUrl, {
+//   method: "POST",
+//   headers: {
+//     "Content-Type": "application/json",
+//     Authorization: `Bearer ${apiKey}`,
+//   },
+//   body: JSON.stringify({
+//     prompt: newText + '\nTL;DR:\n',
+//     max_tokens: 50,
+//     temperature: 0.5,
+//     n: 1,
+//     stop: "\n",
+//   }),
+// })
+//   .then((response) => response.json())
+//   .then((data) => console.log(data))
+//   .catch((error) => console.error(error));
 
 
 
