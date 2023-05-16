@@ -43,6 +43,7 @@ function normalizeText(text) {
   return text;
 }
 
+<<<<<<< HEAD
 
 
 
@@ -82,6 +83,38 @@ const readGithubPath = () => {
 
   //return inputValue;
 }
+=======
+
+function gethtml(){
+  fetch('https://github.com/rhit-halseysh?tab=repositories')
+  .then(response => response.text())
+  .then(html => {
+    
+    
+    const pattern = /(<div id="user-repositories-list".+[.\n\s\w\W]+<\/ul>)/gm;
+
+    const matched = html.match(pattern);
+    
+    const pattern2 = /<a href="(.*)" .* >[\W\s]+(.+)<\/a>/gm;
+    
+    
+
+    //console.log(typeof(matched[0]));
+
+    const foundLink = matched[0].match(pattern2);
+
+    console.log(foundLink);
+
+
+  })
+  .catch(error => console.error(error));
+
+
+
+}
+
+
+>>>>>>> 2aa4502ba0392b44b3376418ce8449b2ad112b14
 
 const readDoc = () => {
   const fileUploadElement = document.getElementById("file-upload");
@@ -114,12 +147,39 @@ const summary = () => {
   });
 }
 
+// const apiKey = "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";
+// const apiUrl = "https://api.openai.com/v1/engines/davinci/completions";
+
+// fetch(apiUrl, {
+//   method: "POST",
+//   headers: {
+//     "Content-Type": "application/json",
+//     Authorization: `Bearer ${apiKey}`,
+//   },
+//   body: JSON.stringify({
+//     prompt: newText + '\nTL;DR:\n',
+//     max_tokens: 50,
+//     temperature: 0.5,
+//     n: 1,
+//     stop: "\n",
+//   }),
+// })
+//   .then((response) => response.json())
+//   .then((data) => console.log(data))
+//   .catch((error) => console.error(error));
+
 
 
 /* Main */
 /** function and class syntax examples */
 rhit.main = function () {
+<<<<<<< HEAD
   summary()
+=======
+	console.log("Ready");
+  gethtml();
+
+>>>>>>> 2aa4502ba0392b44b3376418ce8449b2ad112b14
 };
 
 rhit.main();
