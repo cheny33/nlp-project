@@ -48,11 +48,25 @@ function normalizeText(text) {
 
 
 function gethtml(){
-  fetch('https://github.com/rhit-halseysh/rhit-halseysh.github.io')
-  .then(response => response.html())
+  fetch('https://github.com/rhit-halseysh?tab=repositories')
+  .then(response => response.text())
   .then(html => {
-    console.log(html.querySelector("#user-repositories-list").innerHTML);
-    console.log(html.text());
+    
+    
+    const pattern = /(<div id="user-repositories-list".+[.\n\s\w\W]+<\/ul>)/gm;
+
+    const matched = html.match(pattern);
+    
+    const pattern2 = /<a href="(.*)" .* >[\W\s]+(.+)<\/a>/gm;
+    
+    
+
+    //console.log(typeof(matched[0]));
+
+    const foundLink = matched[0].match(pattern2);
+
+    console.log(foundLink);
+
 
   })
   .catch(error => console.error(error));
@@ -60,6 +74,7 @@ function gethtml(){
 
 
 }
+
 
 
 
@@ -90,6 +105,7 @@ function gethtml(){
 /** function and class syntax examples */
 rhit.main = function () {
 	console.log("Ready");
+  gethtml();
 
 };
 
