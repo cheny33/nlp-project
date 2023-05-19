@@ -58,3 +58,11 @@ select {
 .button1:hover {
     background-color: rgb(35, 151, 183);
 }
+
+.option-description {
+    display: inline-block;
+    margin-left: 15px;
+    color:  rgb(35, 151, 183);
+    font-size: 20px;
+    font-weight: bold;
+}
