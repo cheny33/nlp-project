@@ -47,7 +47,7 @@ function normalizeText(text) {
 }
 
 
-function gethtml(){
+function getLinkToRepos(){
   fetch('https://github.com/rhit-halseysh?tab=repositories')
   .then(response => response.text())
   .then(html => {
@@ -105,7 +105,7 @@ function gethtml(){
 /** function and class syntax examples */
 rhit.main = function () {
 	console.log("Ready");
-  gethtml();
+  getLinkToRepos();
 
 };
 
