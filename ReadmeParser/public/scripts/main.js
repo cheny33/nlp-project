@@ -47,8 +47,12 @@ function normalizeText(text) {
 }
 
 
-function getLinkToRepos(){
-  fetch('https://github.com/rhit-halseysh?tab=repositories')
+function getLinkToRepos(URL){
+  let username = URL.match(/github.com\/(.+)\?/);
+  console.log("Parsing URL :=> " + URL);
+  console.log("USER : " + username[1]);
+  
+  fetch(URL)
   .then(response => response.text())
   .then(html => {
     
@@ -59,19 +63,28 @@ function getLinkToRepos(){
     
     const pattern2 = /<a href="(.*)" .* >[\W\s]+(.+)<\/a>/gm;
     
-    
 
-    //console.log(typeof(matched[0]));
 
-    const foundLink = matched[0].match(pattern2);
+    const foundtags = matched[0].match(pattern2);
+    console.log("Found tags containing repo -------------");
+    console.log(foundtags);
 
-    console.log(foundLink);
+    const pattern3 = /"(.+)"\s\w+/;
 
+    const foundLink = foundtags[1].match(pattern3);
+    let arrToString = "";
+    let arrayOfLink = [];
+    for (let i = 0; i < foundtags.length ; i++){
+      const foundLink = foundtags[i].match(pattern3);
+
+      arrayOfLink.push(foundLink[1]);
+      arrToString += `${i}: https://github.com/${username[1]+foundLink[1]} \n`;
+    }
+
+    console.log(`Links to Repositories grabbed ----------- \n${arrToString}\n`)
 
   })
   .catch(error => console.error(error));
-
-
 
 }
 
@@ -105,7 +118,7 @@ function getLinkToRepos(){
 /** function and class syntax examples */
 rhit.main = function () {
 	console.log("Ready");
-  getLinkToRepos();
+  getLinkToRepos("https://github.com/rhit-halseysh?tab=repositories");
 
 };
 
