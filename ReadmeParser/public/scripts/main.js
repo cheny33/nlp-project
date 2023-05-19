@@ -144,13 +144,9 @@ const summary = () => {
 /* Main */
 /** function and class syntax examples */
 rhit.main = function () {
-<<<<<<< HEAD
-  summary()
-=======
 	console.log("Ready");
   getLinkToRepos("https://github.com/rhit-halseysh?tab=repositories");
 
->>>>>>> 2aa4502ba0392b44b3376418ce8449b2ad112b14
 };
 
 rhit.main();
