@@ -43,47 +43,6 @@ function normalizeText(text) {
   return text;
 }
 
-<<<<<<< HEAD
-
-
-
-// functions 
-const summarizeFetch = (newText, callback) => {
-
-  // console.log(newText);
-  const apiKey = "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";
-  const apiUrl = "https://api.openai.com/v1/engines/davinci/completions";
-  fetch(apiUrl, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: `Bearer ${apiKey}`,
-    },
-    body: JSON.stringify({
-      prompt: newText + '\nTL;DR:\n',
-      max_tokens: 50,
-      temperature: 0.5,
-      n: 1,
-      stop: "\n",
-    }),
-  })
-    .then((response) => response.json())
-    .then((data) => {
-      console.log(data);
-      callback(data);
-    })
-    .catch((error) => console.error(error));
-}
-
-
-const readGithubPath = () => {
-  const inputElement = document.getElementById("github-text");
-  const inputValue = inputElement.value;
-  console.log(inputValue);
-
-  //return inputValue;
-}
-=======
 
 function getLinkToRepos(URL){
   let username = URL.match(/github.com\/(.+)\?/);
@@ -127,7 +86,6 @@ function getLinkToRepos(URL){
 }
 
 
->>>>>>> 2aa4502ba0392b44b3376418ce8449b2ad112b14
 
 const readDoc = () => {
   const fileUploadElement = document.getElementById("file-upload");
